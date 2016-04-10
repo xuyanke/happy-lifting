@@ -5,7 +5,7 @@ var app = app || {};
 
   app.Utils = {
     store: function(namespace, data) {
-      if (data) {
+      if (typeof data  !== 'undefined') {
         return localStorage.setItem(namespace, JSON.stringify(data));
       }
       var store = localStorage.getItem(namespace);
@@ -51,6 +51,10 @@ var app = app || {};
 
     plates: function() {
       return [45, 35, 25, 10, 5, 2.5];
+    },
+
+    leftPad: function(string, pad, length) {
+      return (new Array(length+1).join(pad)+string).slice(-length);
     }
   }
 

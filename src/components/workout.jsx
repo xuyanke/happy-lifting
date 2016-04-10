@@ -5,6 +5,8 @@ var app = window.app || {};
 
   var Utils = app.Utils;
 
+  var WorkoutTimer = app.WorkoutTimer;
+
   app.Workout = React.createClass({
 
     getInitialState: function() {
@@ -24,10 +26,6 @@ var app = window.app || {};
     handleGoBack: function(event) {
       Utils.store('selectedExercise', '');
       this.props.handleGoBack(event);
-    },
-
-    toggleTimer: function(event) {
-
     },
 
     fillBar: function(event) {
@@ -60,6 +58,10 @@ var app = window.app || {};
         fontSize: '16px'
       };
 
+      var modalMarginTop = {
+        marginTop: (screen.height * 0.3) + ''
+      };
+
       return (
         <div>
           <div className="col-lg-8 col-md-7 col-sm-6">
@@ -77,12 +79,18 @@ var app = window.app || {};
               </div>
             </div>
           </div>
-          <div className="btn-group-vertical">            
-            <button type="button" className="btn btn-default" onClick={this.handleGoBack} style={marginBottom}> Go Back </button>
-            <button type="button" className="btn btn-default" onClick={this.toggleTimer}> Timer </button>
+          <div className="col-lg-8 col-md-7 col-sm-6">
+            <button type="button" className="btn btn-default" onClick={this.handleGoBack} style={{float: 'left'}}> Go Back </button>
+            <button type="button" className="btn btn-default" onClick={this.toggleTimer} style={{float: 'right'}} data-toggle="modal" data-target="#timerModal"> Timer </button>
           </div>
-        </div>
-
+          <div id="timerModal" className="modal fade" data-backdrop="static" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content" style={modalMarginTop}>
+                <WorkoutTimer exerciseName={exercise.name.toUpperCase()} shouldShowTimer={true} />
+              </div>
+            </div>
+          </div>
+         </div>
       );
     }
   });
