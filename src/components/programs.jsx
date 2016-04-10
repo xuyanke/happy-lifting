@@ -14,7 +14,7 @@ var app = window.app || {};
         multiplier: 0
       }, {
         sets: 1,
-        reps: 3,
+        reps: 5,
         multiplier: 0.4
       }, {
         sets : 1,
