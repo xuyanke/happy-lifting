@@ -40,7 +40,9 @@ var app = window.app || {};
       } else {
         var exerciseList = exercises.map(function(exercise, i) {
           return (
-            <a key={i} className="list-group-item" onClick={that.handleSelect} name={exercise.name}> {exercise.name} </a>
+            <a key={i} className="list-group-item" onClick={that.handleSelect} name={exercise.name}>
+              <span style={{pointerEvents: 'none'}}> {exercise.name} </span>
+            </a>
           );
         });
         toRender = (
