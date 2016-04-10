@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+# Cache Manifest Version: 1.0
+
+CACHE:
+# Styles
+style/bootstrap-flatly.css
+
+# Icon
+imgs/icon-128.jpg
+
+# Libs
+node_modules/bootstrap/dist/js/bootstrap.min.js
+node_modules/react/dist/react-with-addons.js
+node_modules/react-dom/dist/react-dom.js
+node_modules/react-router/umd/ReactRouter.js
+
+NETWORK:
+*
