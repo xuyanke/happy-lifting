@@ -104,9 +104,16 @@ var app = window.app || {};
 
   app.MIN_WEIGHT = 45;
 
+  var Utils = app.Utils;
+
   var Exercises = app.Exercises;
 
   app.Program = React.createClass({
+
+    componentWillMount: function() {
+      Utils.store('shouldShowTimer', true);
+    },
+
     render: function() {
       var programId = this.props.params.program;
       var program = $.grep(app.PROGRAMS, function(e) {

@@ -86,7 +86,7 @@ var app = window.app || {};
           <div id="timerModal" className="modal fade" data-backdrop="static" role="dialog">
             <div className="modal-dialog">
               <div className="modal-content" style={modalMarginTop}>
-                <WorkoutTimer exerciseName={exercise.name.toUpperCase()} shouldShowTimer={true} />
+                <WorkoutTimer exerciseName={exercise.name.toUpperCase()} shouldShowTimer={Utils.store('shouldShowTimer')} />
               </div>
             </div>
           </div>
