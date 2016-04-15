@@ -18,16 +18,25 @@ var app = window.app || {};
         started: started,
         startTime: startTime,
         timerInterval: timerInterval,
-        shouldShowTimer: this.props.shouldShowTimer,
         elapsedTime: 0
       };
     },
 
-    tick: function() {
+    componentDidMount: function() {
       var modal = $('#timerModal');
-      if (!modal.hasClass('in') && this.state.shouldShowTimer) {
+      if (!modal.hasClass('in') && this.props.shouldShowTimer && this.state.started) {
+        this.tick();
         modal.modal('show');
       }
+    },
+
+    componentWillUnmount: function() {
+      if (this.state.timerInterval) {
+        clearInterval(this.state.timerInterval);
+      }
+    },
+
+    tick: function() {
       var elapsedTime = Math.floor((Date.now() - this.state.startTime) / 1000) % 3600;
       this.setState({
         elapsedTime: elapsedTime
@@ -56,9 +65,7 @@ var app = window.app || {};
 
     handleClose: function() {
       $('#timerModal').modal('hide');
-      this.setState({
-        shouldShowTimer: false
-      });
+      Utils.store('shouldShowTimer', false);
     },
 
     render: function() {
