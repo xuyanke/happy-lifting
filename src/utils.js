@@ -50,7 +50,18 @@ var app = app || {};
     },
 
     plates: function() {
+      var platesStr = localStorage.getItem("plates");
+      if (platesStr !== undefined && platesStr !== null) {
+        var plates = platesStr.split(',').map(Number);
+        if (plates.length > 0) {
+          return plates;
+        }
+      }
       return [45, 35, 25, 10, 5, 2.5];
+    },
+
+    savePlatesChoices: function(platesStr) {
+      localStorage.setItem("plates", platesStr);
     },
 
     leftPad: function(string, pad, length) {

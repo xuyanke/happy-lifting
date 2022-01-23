@@ -20,7 +20,7 @@ var app = window.app || {};
       this.setState({
         weight: event.target.value, 
         updateBar: false
-      });    
+      });
     },
 
     handleGoBack: function(event) {
